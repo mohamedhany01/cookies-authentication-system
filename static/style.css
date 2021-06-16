@@ -1,0 +1,65 @@
+html, body {
+    margin: 30px 40px 0px;
+    text-align: center;
+}
+
+/* Homepage / Login page */
+header {
+    margin: auto;
+}
+
+header h1 {
+    color: red;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+#login-form {
+    border: #000000 solid 3px;
+    padding: 30px;
+    display: inline-block;
+    margin: auto;
+}
+
+#login-form label {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+#login-form input:not(:last-of-type) {
+
+    margin-bottom: 30px;
+    padding: 3px 10px;
+}
+
+/* Register page */
+.error, .success {
+    font-weight: bold;
+}
+
+.error, .message{
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+#register-form {
+    border: #000000 solid 3px;
+    padding: 30px;
+    display: inline-block;
+    margin: auto;
+}
+
+#register-form label {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+#register-form input:not(:last-of-type) {
+
+    margin-bottom: 30px;
+    padding: 3px 10px;
+}

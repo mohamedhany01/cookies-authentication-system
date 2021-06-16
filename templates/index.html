@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <header class="warning">
+        <h1>Warning</h1>
+        <p>The <strong>HTTP's cookies</strong> are not safe to store sensitive data like usernames and passwords.</p>
+        <p>They have vulnerabilities and easy to capture by hackers, because they are a client-side based.</p>
+        <p>This is a simple example, for using cookies, don't use this example in the production environment.</p>
+    </header>
+    
+    {% if (not username or not password) and ( username |length == 0 or password |length == 0) %}
+        <p class="message">You are not login, please <a href="{{ url_for("login") }}">Login</a></p>
+    {% else %}
+        <p class="success">Welcome, you are logged in as <strong>{{username.replace(username[0], username[0].upper(), 1)}}</strong>.</p>
+        <p>You can logout anytime you want <a href="{{ url_for("logout") }}">Logout</a></p>
+    {% endif %}
+
+</body>
+</html>
