@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout</title>
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="icon" href="../static/favicon.png" sizes="512x512" type="image/png">
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title%} Logout {% endblock%}
+
+{% block body %} 
+    onload="checkCookiesEnabled(), timer(5, '/')"
+{% endblock %}
+
+{% block content%}
+
+<h2 class="success">You logout successfully, you will redirect to homepage after <span id="seconds"></span> seconds</h2>
+
+{% endblock%}

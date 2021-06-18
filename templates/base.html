@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home {% endblock %}</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/favicon.png" sizes="512x512" type="image/png">
+</head>
+<body {% block body %} {% endblock %}>
+    <div class="cookies-status error"></div>
+
+    <header class="warning">
+        <h1>Warning</h1>
+        <p>The <strong>HTTP's cookies</strong> are not safe to store sensitive data like usernames and passwords.</p>
+        <p>They have vulnerabilities and easy to capture by hackers, because they are a client-side based.</p>
+        <p>This is a simple example, for using cookies, don't use this example in the production environment.</p>
+    </header>
+    
+    {% block content %} {% endblock %}
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

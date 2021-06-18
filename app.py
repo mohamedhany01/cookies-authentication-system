@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, make_response, flash
+from flask import Flask, render_template, request, make_response, flash, redirect
 from flask.helpers import url_for
 import os
-
 
 # Make this app is a flask app
 app = Flask(__name__)
@@ -22,7 +21,7 @@ def init_cookines(response_page, days_number):
 
 
 # Homepage logic
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
 
     # If cookies are None in GET request
@@ -90,6 +89,7 @@ def login():
 
     return render_template("login.html")
 
+# Register page logic
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
@@ -116,23 +116,24 @@ def register():
             response.set_cookie("username", new_user, max_age= 5 * DAY)
             response.set_cookie("password", new_password, max_age= 5 * DAY)
 
-            # Set redirect url
-            response.headers["Location"] = url_for("index")
+            # Set the redirect url
+            response.headers["Location"] = url_for("register")
 
-            # Applay cookies changes and redirect to login page
+            flash("You registered successfully, you will redirect to homepage after", "success")
+            
             return response, 302
-
         else:
 
             # Set a flashed massage
-            flash("Error: Empty data are not allowed")
+            flash("Error: Empty fields are not allowed", 'error')
 
             # Applay cookies changes and redirect to login page
-            return response, 302
+            return redirect(url_for("register"))
 
     # Make a response and reload the page
     return make_response(render_template("register.html")), 302
 
+# Logout page logic
 @app.route("/logout")
 def logout():
 
@@ -147,18 +148,17 @@ def logout():
         return init_cookines("login.html", 5), 302
 
     # If cookies are exist, then make them empty, and redirect to log in page
-    # Modify response
+    
     if cookie_username and cookie_password:
+
+        # Modify response
         response = make_response(render_template("logout.html"))
 
         # Remove cookies
         response.set_cookie("username", "", max_age= 0)
         response.set_cookie("password", "", max_age= 0)
 
-        # Set redirect url
-        response.headers["Location"] = url_for("login")
-
-        return response, 302
+        return response
 
     return render_template("logout.html")
 

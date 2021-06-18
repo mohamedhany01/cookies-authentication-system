@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="icon" href="../static/favicon.png" sizes="512x512" type="image/png">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <header class="warning">
-        <h1>Warning</h1>
-        <p>The <strong>HTTP's cookies</strong> are not safe to store sensitive data like usernames and passwords.</p>
-        <p>They have vulnerabilities and easy to capture by hackers, because they are a client-side based.</p>
-        <p>This is a simple example, for using cookies, don't use this example in the production environment.</p>
-    </header>
+{% block title%} Register {% endblock%}
 
-    {% with messages = get_flashed_messages() %}
+{% block body %}
+    onload="checkCookiesEnabled(), timer(3, '/')"
+{% endblock %}
+
+{% block content%}
+
+    {# Show flashed messages #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            {% for message in messages %}
-                <p class="error">{{ message }}</p>
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% elif category == 'success' %}
+                    <p class="{{ category }}">{{ message }} <span id="seconds"></span> seconds</p>
+                {% endif %}
             {% endfor%}
         {% endif %}
     {% endwith %}
@@ -34,7 +30,4 @@
         <br>
         <input type="submit" value="Register">
     </form>
-
-
-</body>
-</html>
+{% endblock%}

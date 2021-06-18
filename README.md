@@ -41,4 +41,4 @@ Well, I am just trying to understand cookies by using them in a mechanism that h
 To build this project I used **HTML**, **CSS**, **Python 3/Flask 2**, **jinja2**.
 
 ## Installation
-To use this project just **clone** it or **download** it directly and start with the **127.0.0.1:port_number/homepage**. Be sure to use the latest version of Firefox, Chrome, Opera, Edge, or any other modern browsers.
+To use this project just **clone** it or **download** it directly and start with the **127.0.0.1:port_number/**. Be sure to use the latest version of Firefox, Chrome, Opera, Edge, or any other modern browsers.
